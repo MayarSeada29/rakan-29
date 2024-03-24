@@ -225,23 +225,23 @@ class _LoginPageState extends State<LoginPage> {
                             if (e.code == 'user-not-found') {
                               print('No user found for that email');
 
-                              AwesomeDialog(
-                                context: context,
-                                dialogType: DialogType.error,
-                                animType: AnimType.rightSlide,
-                                title: 'Dialog Title',
-                                desc: 'Wrong password provided for that user.',
-                              ).show();
+                              // AwesomeDialog(
+                              //   context: context,
+                              //   dialogType: DialogType.error,
+                              //   animType: AnimType.rightSlide,
+                              //   title: 'Dialog Title',
+                              //   desc: 'Wrong password provided for that user.',
+                              // ).show();
 
                               print('Wrong password provided for that user.');
 
-                              AwesomeDialog(
-                                context: context,
-                                dialogType: DialogType.error,
-                                animType: AnimType.rightSlide,
-                                title: 'Dialog Title',
-                                desc: 'Wrong password provided for that user.',
-                              ).show();
+                              // AwesomeDialog(
+                              //   context: context,
+                              //   dialogType: DialogType.error,
+                              //   animType: AnimType.rightSlide,
+                              //   title: 'Dialog Title',
+                              //   desc: 'Wrong password provided for that user.',
+                              // ).show();
                             }
                           }
                           isLoading = true;

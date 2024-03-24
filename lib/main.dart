@@ -43,6 +43,10 @@ class _RaknaState extends State<Rakna> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      home: (FirebaseAuth.instance.currentUser != null &&
+              FirebaseAuth.instance.currentUser!.emailVerified)
+          ? DashBordPage()
+          : LoginPage(),
       theme: ThemeData.light(),
       debugShowCheckedModeBanner: false,
       routes: {
@@ -54,9 +58,6 @@ class _RaknaState extends State<Rakna> {
         ChangePassword.id: (context) => const ChangePassword(),
         ForgotPassword.id: (context) => const ForgotPassword(),
         LoginPage.id: (context) => const LoginPage(),
-        // OtpPage.id: (context) => const OtpPage(
-        //       phone: '',
-        //     ),
         PasswordConfirmedPage.id: (context) => const PasswordConfirmedPage(),
         DashBordPage.id: (context) => const DashBordPage(),
       },

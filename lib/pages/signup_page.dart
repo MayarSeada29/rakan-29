@@ -301,7 +301,7 @@ class _SginUpState extends State<SginUp> {
                           );
                         },
                         child: const Text(
-                          'privacy police',
+                          'privacy policy',
                           style: TextStyle(
                             color: Color(0xFF4D97F6),
                             fontFamily: 'Bebas',

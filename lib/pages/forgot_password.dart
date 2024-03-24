@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import 'package:rakna/constants.dart';
 import 'package:rakna/pages/change_password.dart';
 import 'package:rakna/widgets/custom_button.dart';
@@ -20,6 +19,32 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   var emailController = TextEditingController();
 
   var passwordController = TextEditingController();
+  //firebase auth
+  Future passwordReset() async {
+    try {
+      FirebaseAuth.instance
+          .sendPasswordResetEmail(email: emailController.text.trim());
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: Text("passord reset link sent ! check your email"),
+          );
+        },
+      );
+    } on FirebaseAuthException catch (e) {
+      print(e);
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: Text(e.message.toString()),
+          );
+        },
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,12 +134,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     height: 60,
                   ),
                   CustomButtonKm(
-                    text: 'Send Code',
+                    text: 'Reset Password',
                     onTap: () async {
                       if (formKey.currentState!.validate()) {
-                        await FirebaseAuth.instance.sendPasswordResetEmail(
-                          email: emailController.text,
-                        );
                         Navigator.pushNamed(
                           // ignore: use_build_context_synchronously
                           context,

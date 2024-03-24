@@ -23,7 +23,7 @@ class PrivacyPoliceyPage extends StatelessWidget {
             ), //spacerTop
             GestureDetector(
               child: const Text(
-                'privcy policey',
+                'privacy policy',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFFF8A00E),

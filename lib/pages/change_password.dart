@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:rakna/constants.dart';
 import 'package:rakna/custom_text_field.dart';
 import 'package:rakna/widgets/custom_button.dart';
@@ -45,7 +44,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                 const Row(
                   children: [
                     Text(
-                      'Enter Password',
+                      'Change Password',
                       style: TextStyle(
                         color: kPrimaryColorText,
                         fontSize: 40,
@@ -171,8 +170,9 @@ class _ChangePasswordState extends State<ChangePassword> {
                 // ),
                 CustomButtonKm(
                   text: 'Confirm Password',
-                  onTap: () {
-                    Navigator.pushNamed(context, 'PasswordConfirmedPage');
+                  onTap: () async {
+                      
+                  Navigator.pushNamed(context, 'PasswordConfirmedPage');
                   },
                 )
               ],
