@@ -6,7 +6,7 @@ import 'package:rakna/widgets/custom_button.dart';
 import 'package:rakna/widgets/custom_textfield.dart';
 
 class ForgotPassword extends StatefulWidget {
-  const ForgotPassword({Key? key}) : super(key: key);
+  const ForgotPassword({super.key});
   static String id = 'ForgotPassword';
   @override
   State<ForgotPassword> createState() => _ForgotPasswordState();
@@ -27,7 +27,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       showDialog(
         context: context,
         builder: (context) {
-          return AlertDialog(
+          return const AlertDialog(
             content: Text("passord reset link sent ! check your email"),
           );
         },

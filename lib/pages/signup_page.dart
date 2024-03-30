@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:rakna/constants.dart';
@@ -311,6 +312,10 @@ class _SginUpState extends State<SginUp> {
                     ],
                   ),
                   const Gap(7),
+                  if (FirebaseAuth.instance.currentUser != null &&
+                      FirebaseAuth.instance.currentUser!.emailVerified)
+                    const SnackBar(content: Text('Plessenter'))
+                  else
                   CustomButtonKm(
                     text: "Sign Up",
                     onTap: () async {
@@ -322,25 +327,38 @@ class _SginUpState extends State<SginUp> {
                             email: emailController.text,
                             password: passwordController.text,
                           );
+                          if (Credential.user!.emailVerified) {
+                            Navigator.pushReplacementNamed(context, "Dashboard");
+                          }
+                          else{
+                             AwesomeDialog(
+                              context: context,
+                              dialogType: DialogType.error,
+                              animType: AnimType.rightSlide,
+                              title: 'Alerting',
+                              desc: 'Please check your email and click on the link to verify U email ',
+                             ).show();
+                          }
                         } on FirebaseAuthException catch (e) {
-                          if (e.code == 'weak-password') {
-                            print('The password provided is too weak.');
-                            //   AwesomeDialog(
-                            //   context: context,
-                            //   dialogType: DialogType.error,
-                            //   animType: AnimType.rightSlide,
-                            //   title: 'Dialog Title',
-                            //   desc: 'The password provided is too weak',
-                            //  ).show();
+                          if (e.code == 'weak-password')  
+                           {
+                           print('The password provided is too weak.');
+                              AwesomeDialog(
+                              context: context,
+                              dialogType: DialogType.error,
+                              animType: AnimType.rightSlide,
+                              title: 'Error',
+                              desc: 'The password provided is too weak',
+                             ).show();
                           } else if (e.code == 'email-already-in-use') {
-                            print('The account already exists for that email.');
-                            //   AwesomeDialog(
-                            //   context: context,
-                            //   dialogType: DialogType.error,
-                            //   animType: AnimType.rightSlide,
-                            //   title: 'Dialog Title',
-                            //   desc: 'The account already exists for that email.',
-                            //  ).show();
+                           print('The account already exists for that email.');
+                              AwesomeDialog(
+                              context: context,
+                              dialogType: DialogType.error,
+                              animType: AnimType.rightSlide,
+                              title: 'Error',
+                              desc: 'The account already exists for that email.',
+                             ).show();
                           }
                         } catch (e) {
                           print(e);
@@ -353,6 +371,9 @@ class _SginUpState extends State<SginUp> {
                       //     return const DashBordPage();
                       //   }),
                       // );
+                      FirebaseAuth.instance.currentUser!
+                            .sendEmailVerification();
+                        Navigator.pushNamed(context, 'LoginPag');
                     },
                   ),
 

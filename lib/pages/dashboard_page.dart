@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class DashBordPage extends StatelessWidget {
@@ -8,5 +9,9 @@ class DashBordPage extends StatelessWidget {
     return Container(
       color: Color(0xff2b2b2b),
     );
+   ///  FirebaseAuth.instance.currentUser!.emailVerified
+      //?
+
   }
+
 }

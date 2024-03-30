@@ -1,3 +1,5 @@
+//import 'dart:html';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -229,8 +231,8 @@ class _LoginPageState extends State<LoginPage> {
                               //   context: context,
                               //   dialogType: DialogType.error,
                               //   animType: AnimType.rightSlide,
-                              //   title: 'Dialog Title',
-                              //   desc: 'Wrong password provided for that user.',
+                              //   title: 'Error',
+                              //   desc: 'No user found for that email.',
                               // ).show();
 
                               print('Wrong password provided for that user.');
@@ -239,8 +241,23 @@ class _LoginPageState extends State<LoginPage> {
                               //   context: context,
                               //   dialogType: DialogType.error,
                               //   animType: AnimType.rightSlide,
-                              //   title: 'Dialog Title',
+                              //   title: 'Error',
                               //   desc: 'Wrong password provided for that user.',
+                              // ).show();
+                           // }
+                            // if (Credential.user!.emailVerified) {
+                            //   Navigator.pushReplacementNamed(
+                            //       context, "DashBoard");
+                            // } else {
+                            //   FirebaseAuth.instance.currentUser!
+                            //       .sendEmailVerification();
+                              // AwesomeDialog(
+                              //   context: context,
+                              //   dialogType: DialogType.error,
+                              //   animType: AnimType.rightSlide,
+                              //   title: 'Alerting',
+                              //   desc:
+                              //       'Please check your email and click on the link to verify U email ',
                               // ).show();
                             }
                           }
